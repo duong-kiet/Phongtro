@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import MainLayout from "./components/layouts/MainLayout";
+import CanHoChungCuPage from "./pages/CanHoChungCuPage";
+import CanHoDichVuPage from "./pages/CanHoDichVuPage";
+import CanHoMiniPage from "./pages/CanHoMiniPage";
+import NhaNguyenCanPage from "./pages/NhaNguyenCanPage";
+import OGhepPage from "./pages/OGhepPage";
+import PhongTroPage from "./pages/PhongTroPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<PhongTroPage />} />
+          <Route path="nha-cho-thue" element={<NhaNguyenCanPage />} />
+          <Route path="cho-thue-can-ho" element={<CanHoChungCuPage />} />
+          <Route
+            path="cho-thue-can-ho-chung-cu-mini"
+            element={<CanHoMiniPage />}
+          />
+          <Route path="cho-thue-can-ho-dich-vu" element={<CanHoDichVuPage />} />
+          <Route path="tim-nguoi-o-ghep" element={<OGhepPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
